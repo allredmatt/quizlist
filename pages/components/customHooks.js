@@ -18,4 +18,6 @@ import {useEffect, useRef } from 'react';
       return () => clearInterval(id);
     }
   }, [delay]);
-}
+};
+
+export default useInterval
