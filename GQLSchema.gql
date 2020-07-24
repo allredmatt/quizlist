@@ -1,0 +1,12 @@
+type Lists {
+  Id: String!
+  name: String!
+  time: Int
+  description: String
+  content: [String]!
+}
+
+type Query {
+  allIds: [Lists!]
+  findId(Id: String!): Lists!
+}
