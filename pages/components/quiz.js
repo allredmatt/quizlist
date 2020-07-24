@@ -46,14 +46,14 @@ export default function Quiz ({list}) {
     //.time for a time limit of the quiz as an int in minutes.
     //.description with some brief instructions of what to do.
     
-    const [state, dispatch] = useReducer(reducer, {...initialState, time: list.time*60});
+    const [state, dispatch] = useReducer(reducer, {...initialState, time: list?.time*60});
     const {inputText, guessList, correct, time, gameState} = state;
 
     //Look at input text and check to see if there is a match with the list of answers
     useEffect(() => {
-        if(list.content.includes(inputText) && !guessList.includes(inputText)){
+        if(list?.content.includes(inputText) && !guessList.includes(inputText)){
             //Checks to see if all countries are guessed correctly, -1 as current correct guess has not been dispatched
-            if(guessList.length === list.content.length - 1){
+            if(guessList.length === list?.content.length - 1){
                 dispatch({type: 'winGame'})
             }
             dispatch({type: 'correct'})
@@ -69,18 +69,18 @@ export default function Quiz ({list}) {
         switch(gameState){
             case 'won':
                 return  <>
-                            <p>Well done you have guessed all {list.content.length} correctly</p>
-                            <button onClick={() => dispatch({type: 'reset', payload: list.time*60 })}>Play Again</button>
+                            <p>Well done you have guessed all {list?.content.length} correctly</p>
+                            <button onClick={() => dispatch({type: 'reset', payload: list?.time*60 })}>Play Again</button>
                         </>
             case 'lost':
                 return  <> 
-                            <p>Sorry you lost, you only managed to guess {correct} out of {list.content.length} correct.</p>
-                            <button onClick={() => dispatch({type: 'reset', payload: list.time*60 })}>Play Again</button>
+                            <p>Sorry you lost, you only managed to guess {correct} out of {list?.content.length} correct.</p>
+                            <button onClick={() => dispatch({type: 'reset', payload: list?.time*60 })}>Play Again</button>
                         </>
             default:
                 return  <>
                             <p>You have {Math.ceil(time/60)} minutes to try and solve this quizList. The time will start as soon as you type.</p>
-                            <p>The quizList {list.name} has the following instructions: {list.description}. You have {correct} correct so far.</p>
+                            <p>The quizList {list?.name} has the following instructions: {list?.description}. You have {correct} correct so far.</p>
                             <input type="text" value={inputText} onChange={(e) => dispatch({type: 'input', payload: e.target.value})}></input>
                             <button onClick={() => dispatch({type: 'loseGame'})}>Give up</button>
                         </>
@@ -90,10 +90,10 @@ export default function Quiz ({list}) {
     return (
         <div className = "quiz-board">
             <Menu />
-            <h3>Welcome to the quiz: {list.name}</h3>
+            <h3>Welcome to the quiz: {list?.name}</h3>
             {gameBoardHeadText()}
             <ol>
-                {list.content.map((item) => {
+                {list?.content.map((item) => {
                     if(guessList.includes(item)){return <li key={item}>{item}</li>}
                     else if(gameState === 'lost'){return <li key={item} className="missing">{item}</li>}
                     return <li key={item} className="not-guessed">Still to guess</li>
