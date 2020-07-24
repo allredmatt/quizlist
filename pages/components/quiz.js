@@ -7,7 +7,8 @@ const initialState = {
     guessList: [],
     correct: 0,
     playingGame: false,
-    gameState: 'start'
+    gameState: 'start',
+    time: ''
     //Also has a time: initialised when useReducer is used - but depends on props.
 }
 
