@@ -14,8 +14,8 @@ export default function Home() {
 		<Menu />
         
         <p className="description">
-    		<Link href="/create"><a>Create your own quizList here</a></Link>
-			<Link href="/init"><a>Or play the countries of the world quiz.</a></Link>
+    		<Link href="/create"><a>Create your own quizList here</a></Link><br/ >
+			  <Link href="/init"><a>Or play the countries of the world quiz.</a></Link>
         </p>
       </main>
 
