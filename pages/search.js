@@ -34,8 +34,7 @@ export default function Find () {
                 {nameListsFromDB.filter((list)=>list.name.match(regex)).map((list)=><li key={list.Id}><Link href={"/"+list.Id}><a className="menu-style">{list.name}</a></Link></li>)}
             </ul>
             <style jsx>{`
-            menu-style{
-                &:link, &:visited {
+            .menu-style a:link, .menu-style a:visited {
                     background-color: thistle;
                     color: black;
                     padding: 5px 25px;
@@ -46,7 +45,7 @@ export default function Find () {
                     border: 1px solid thistle;
                     border-radius: 4px;
                 }
-                &:hover, &:active {
+                .menu-style a:hover, .menu-style a:active {
                     border: 1px solid lavender;
                     border-radius: 4px;
                 }
