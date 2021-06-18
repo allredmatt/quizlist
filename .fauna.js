@@ -1,1 +1,0 @@
-export const faunaKey = 'fnADwQ5-WkACBQ7bmCKIVNjBTVe9j6TB-C0DP--H';
